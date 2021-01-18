@@ -9,12 +9,21 @@
           </keep-alive>
         </div>
       </div>
+      <Button color="grey" type="button" class="fixed bottom-8 left-4 right-4">
+        <template #icon>
+          <refresh-cw-icon size="1x" class="text-white mr-2" />
+        </template>
+        <template #label>
+          Reload
+        </template>
+      </Button>
     </div>
   </div>
 </template>
 
 <script>
 import getSiteMeta from "~/utils/getSiteMeta.js";
+import { RefreshCwIcon } from 'vue-feather-icons'
 import Cosmic from "cosmicjs";
 const api = Cosmic();
 const bucket = api.bucket({
@@ -23,6 +32,9 @@ const bucket = api.bucket({
 });
 
 export default {
+  components: {
+    RefreshCwIcon
+  },
   computed: {
     meta() {
       const metaData = {
