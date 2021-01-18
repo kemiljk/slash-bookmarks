@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import getSiteMeta from "~/utils/getSiteMeta.js";
+import getSiteMeta from "~/utils/getSiteMeta.js"
 import { RefreshCwIcon } from 'vue-feather-icons'
 import Cosmic from "cosmicjs";
 const api = Cosmic();
