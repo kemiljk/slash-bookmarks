@@ -1,8 +1,7 @@
 <template>
   <div class="relative mx-auto">
     <Nav />
-    <div class="max-w-3xl mx-auto px-4">
-      <Header>/bookmarks</Header>
+    <div class="max-w-3xl mx-auto px-4 pt-16">
       <div class="grid grid-row xs:grid-cols-1 sm:grid-cols-2 gap-8">
         <div v-for="bookmark in bookmarks" :key="bookmark._id">
           <keep-alive>
