@@ -5,7 +5,12 @@
       <div class="grid grid-row xs:grid-cols-1 sm:grid-cols-2 gap-8">
         <div v-for="bookmark in bookmarks" :key="bookmark._id">
           <keep-alive>
-            <BookmarkCard :bookmark="bookmark" @markAsRead="markAsRead" />
+            <BookmarkCard
+              :bookmark="bookmark"
+              @markAsRead="markAsRead"
+              @markAsUnread="markAsUnread"
+              @deleteBookmark="deleteBookmark"
+            />
           </keep-alive>
         </div>
       </div>
@@ -79,7 +84,6 @@ export default {
         });
     },
     markAsRead(value) {
-      console.log(value);
       const params = {
         slug: value,
         type_slug: "bookmarks",
@@ -95,6 +99,52 @@ export default {
       };
       bucket
         .editObjectMetafields(params)
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    markAsUnread(value) {
+      const params = {
+        slug: value,
+        type_slug: "bookmarks",
+        metafields: [
+          {
+            type: "switch",
+            title: "is read",
+            key: "is_read",
+            value: false,
+            options: "true,false",
+          },
+        ],
+      };
+      bucket
+        .editObjectMetafields(params)
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    deleteBookmark(value) {
+      const params = {
+        slug: value,
+        type_slug: "bookmarks",
+        metafields: [
+          {
+            type: "switch",
+            title: "is read",
+            key: "is_read",
+            value: true,
+            options: "true,false",
+          },
+        ],
+      };
+      bucket
+        .deleteObject(params)
         .then((data) => {
           console.log(data);
         })
