@@ -3,13 +3,9 @@
     <Nav />
     <div class="max-w-3xl mx-auto px-4 pt-16">
       <div class="grid grid-row xs:grid-cols-1 sm:grid-cols-2 gap-8">
-        <div
-          v-for="bookmark in bookmarks"
-          :key="bookmark._id"
-          @click="markAsRead"
-        >
+        <div v-for="bookmark in bookmarks" :key="bookmark._id">
           <keep-alive>
-            <BookmarkCard :bookmark="bookmark" />
+            <BookmarkCard :bookmark="bookmark" @markAsRead="markAsRead" />
           </keep-alive>
         </div>
       </div>
@@ -61,7 +57,6 @@ export default {
   data() {
     return {
       bookmarks: {},
-      slug: "",
     };
   },
   created() {
@@ -83,9 +78,10 @@ export default {
           this.bookmarks = bookmarks;
         });
     },
-    markAsRead() {
+    markAsRead(value) {
+      console.log(value);
       const params = {
-        slug: `${this.slug}`,
+        slug: value,
         type_slug: "bookmarks",
         metafields: [
           {
