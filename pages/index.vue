@@ -3,7 +3,11 @@
     <Nav />
     <div class="max-w-3xl mx-auto px-4 pt-16">
       <div class="grid grid-row xs:grid-cols-1 sm:grid-cols-2 gap-8">
-        <div v-for="bookmark in bookmarks" :key="bookmark._id">
+        <div
+          v-for="bookmark in bookmarks"
+          :key="bookmark._id"
+          @click="markAsRead"
+        >
           <keep-alive>
             <BookmarkCard :bookmark="bookmark" />
           </keep-alive>
@@ -13,9 +17,7 @@
         <template #icon>
           <refresh-cw-icon size="1x" class="text-white mr-2" />
         </template>
-        <template #label>
-          Reload
-        </template>
+        <template #label> Reload </template>
       </Button>
     </div>
   </div>
@@ -23,17 +25,18 @@
 
 <script>
 import getSiteMeta from "~/utils/getSiteMeta.js";
-import { RefreshCwIcon } from 'vue-feather-icons'
+import { RefreshCwIcon } from "vue-feather-icons";
 import Cosmic from "cosmicjs";
 const api = Cosmic();
 const bucket = api.bucket({
   slug: "kemiljk",
   read_key: "uNXYQDbNTCWQyEaFjq44PUolieGKBuzePTaEdnDl0CHLcnJtPK",
+  write_key: "NeisRYzkRKMy2WGphoFPafGQMIOlCrDU7HJrQHzIZQavjka1Zb",
 });
 
 export default {
   components: {
-    RefreshCwIcon
+    RefreshCwIcon,
   },
   computed: {
     meta() {
@@ -69,13 +72,36 @@ export default {
       await bucket
         .getObjects({
           type: "bookmarks",
-          props: "_id,title,metadata,created_at",
+          props: "_id,slug,title,metadata,created_at",
           sort: "-created_at",
         })
         .then((data) => {
           const bookmarks = data.objects;
           this.loading = false;
           this.bookmarks = bookmarks;
+        });
+    },
+    markAsRead() {
+      const params = {
+        slug: `${this.slug}`,
+        type_slug: "bookmarks",
+        metafields: [
+          {
+            type: "switch",
+            title: "is read",
+            key: "is_read",
+            value: true,
+            options: "true,false",
+          },
+        ],
+      };
+      bucket
+        .editObjectMetafields(params)
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
   },
