@@ -68,8 +68,7 @@
         class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
         @click="
           copyToClipboard();
-          show = true
-        "
+          show = true"
       >
         <div class="flex justify-between items-center">
           <check-icon
