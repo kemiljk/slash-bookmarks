@@ -7,29 +7,19 @@
       class="cursor-pointer mb-0"
       @click="
         markAsRead();
-        isRead();
       "
     >
       <button
         class="text-left w-full focus:outline-none focus:ring-2 focus:ring-white"
         type="button"
         :class="[
-          bookmark.metadata.is_read,
-          read === true ? 'opacity-50' : 'opacity-100',
+          bookmark.metadata.is_read ? 'opacity-50' : 'opacity-100',
         ]"
       >
         <header class="flex items-top justify-between pt-4 pb-2">
           <h1 class="text-black dark:text-white text-xl font-bold">
             {{ bookmark.title }}
           </h1>
-          <check-icon
-            v-if="bookmark.metadata.is_read"
-            class="text-green-700 dark:text-green-400 flex-shrink-0 ml-4"
-          />
-          <bookmark-icon
-            v-else
-            class="text-gray-700 dark:text-yellow-400 flex-shrink-0 ml-4"
-          />
         </header>
         <p
           class="font-mono text-gray-500 dark:text-gray-400 pt-0 pb-2 font-medium"
@@ -47,28 +37,25 @@
     <div class="flex space-x-2 py-6">
       <button
         type="button"
-        class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 text-white rounded-full px-3 py-1"
+        class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
         @click="
           markAsUnread();
-          isUnread();
         "
       >
         <div class="flex justify-between items-center">
           <book-open-icon
             size="1x"
-            class="mr-2 text-gray-700 dark:text-gray-300"
+            class="text-gray-700 dark:text-gray-300"
           />
-          <span class="text-gray-700 dark:text-gray-300">Unread</span>
         </div>
       </button>
       <button
         type="button"
-        class="bg-red-400 dark:bg-red-900 hover:bg-red-500 dark:hover:bg-red-800 text-white rounded-full px-3 py-1"
+        class="bg-red-400 dark:bg-red-900 hover:bg-red-500 dark:hover:bg-red-800 text-white rounded-full px-3 py-3"
         @click="deleteBookmark()"
       >
         <div class="flex justify-between items-center">
-          <trash-2-icon size="1x" class="mr-2 text-red-700 dark:text-red-100" />
-          <span class="text-gray-700 dark:text-red-100">Delete</span>
+          <trash-2-icon size="1x" class="text-white dark:text-white" />
         </div>
       </button>
     </div>
@@ -99,26 +86,17 @@ export default {
     BookOpenIcon,
     Trash2Icon,
   },
-  data() {
-    return {
-      read: false,
-    };
-  },
   methods: {
     markAsRead() {
-      this.$emit("markAsRead", "wilson-miner-staff-design");
+      this.bookmark.metadata.is_read = true;
+      this.$emit("markAsRead", this.bookmark.slug);
     },
     markAsUnread() {
-      this.$emit("markAsUnread", "wilson-miner-staff-design");
+      this.bookmark.metadata.is_read = false;
+      this.$emit("markAsUnread", this.bookmark.slug);
     },
     deleteBookmark() {
-      this.$emit("deleteBookmark", "");
-    },
-    isRead() {
-      this.read = true;
-    },
-    isUnread() {
-      this.read = false;
+      this.$emit("deleteBookmark", this.bookmark.slug);
     },
   },
 };

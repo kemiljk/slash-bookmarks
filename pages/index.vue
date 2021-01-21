@@ -66,7 +66,6 @@ export default {
   },
   created() {
     this.getBookmarksData();
-    this.slug = this.$route.params.slug;
   },
   methods: {
     async getBookmarksData() {
