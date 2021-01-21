@@ -10,6 +10,7 @@
               @markAsRead="markAsRead"
               @markAsUnread="markAsUnread"
               @deleteBookmark="deleteBookmark"
+              @copyToClipboard="copyToClipboard"
             />
           </keep-alive>
         </div>
@@ -150,6 +151,9 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    copyToClipboard(value) {
+      navigator.clipboard.writeText(value);
     },
   },
 };

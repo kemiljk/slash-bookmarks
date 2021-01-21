@@ -20,6 +20,9 @@
           <h1 class="text-black dark:text-white text-xl font-bold">
             {{ bookmark.title }}
           </h1>
+          <check-icon :class="[
+          bookmark.metadata.is_read ? 'text-green-700 dark:text-green-400 flex-shrink-0 ml-4' : 'hidden']"
+              />
         </header>
         <p
           class="font-mono text-gray-500 dark:text-gray-400 pt-0 pb-2 font-medium"
@@ -34,7 +37,8 @@
         </p>
       </button>
     </a>
-    <div class="flex space-x-2 py-6">
+    <div class="flex space-x-2 py-6 justify-between">
+      <div flex space-x-2>
       <button
         type="button"
         class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
@@ -58,6 +62,28 @@
           <trash-2-icon size="1x" class="text-white dark:text-white" />
         </div>
       </button>
+      </div>
+      <button
+        type="button"
+        class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
+        @click="
+          copyToClipboard();
+          show = true
+        "
+      >
+        <div class="flex justify-between items-center">
+          <check-icon
+            v-show="show"
+            size="1x"
+            class="text-green-700 dark:text-green-300"
+          />
+          <link-2-icon
+            v-show="!show"
+            size="1x"
+            class="text-gray-700 dark:text-gray-300"
+          />
+        </div>
+      </button>
     </div>
   </div>
 </template>
@@ -68,6 +94,7 @@ import {
   CheckIcon,
   BookOpenIcon,
   Trash2Icon,
+  Link2Icon,
 } from "vue-feather-icons";
 
 export default {
@@ -85,6 +112,12 @@ export default {
     CheckIcon,
     BookOpenIcon,
     Trash2Icon,
+    Link2Icon
+  },
+  data() {
+    return {
+      show: false
+    }
   },
   methods: {
     markAsRead() {
@@ -98,6 +131,9 @@ export default {
     deleteBookmark() {
       this.$emit("deleteBookmark", this.bookmark.slug);
     },
+    copyToClipboard() {
+      this.$emit("copyToClipboard", this.bookmark.metadata.url);
+    }
   },
 };
 </script>
