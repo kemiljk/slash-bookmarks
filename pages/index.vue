@@ -151,6 +151,9 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+      if (process.browser) {
+        window.location.reload();
+      }
     },
     copyToClipboard(value) {
       navigator.clipboard.writeText(value);
