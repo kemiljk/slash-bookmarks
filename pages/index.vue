@@ -15,11 +15,10 @@
           </keep-alive>
         </div>
       </div>
-      <Button color="grey" type="button" class="fixed bottom-8 left-4 right-4">
+      <Button color="grey" type="button" class="fixed bottom-4 right-4">
         <template #icon>
-          <refresh-cw-icon size="1x" class="text-white mr-2" />
+          <refresh-cw-icon size="1x" class="text-white" />
         </template>
-        <template #label> Reload </template>
       </Button>
     </div>
   </div>
