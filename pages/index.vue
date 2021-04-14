@@ -129,27 +129,16 @@ export default {
         });
     },
     deleteBookmark(value) {
-      const params = {
+    bucket
+      .deleteObject({
         slug: value,
-        type_slug: "bookmarks",
-        metafields: [
-          {
-            type: "switch",
-            title: "is read",
-            key: "is_read",
-            value: true,
-            options: "true,false",
-          },
-        ],
-      };
-      bucket
-        .deleteObject(params)
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      })
+      .then(data => {
+        console.log(data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
       if (process.browser) {
         window.location.reload();
       }
