@@ -128,7 +128,7 @@ export default {
       this.$emit("markAsUnread", this.bookmark.slug);
     },
     deleteBookmark() {
-      this.$emit("deleteBookmark", this.bookmark._id);
+      this.$emit("deleteBookmark", this.bookmark.id);
     },
     copyToClipboard() {
       this.$emit("copyToClipboard", this.bookmark.metadata.url);
