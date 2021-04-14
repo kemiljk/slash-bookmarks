@@ -72,9 +72,11 @@ export default {
       this.loading = true;
       await bucket
         .getObjects({
-          type: "bookmarks",
-          props: "_id,slug,title,metadata,created_at",
-          sort: "-created_at",
+          query: {
+            type: "bookmarks",
+            props: "_id,slug,title,metadata,created_at",
+            sort: "-created_at",
+          }
         })
         .then((data) => {
           const bookmarks = data.objects;
