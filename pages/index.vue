@@ -74,8 +74,8 @@ export default {
         .getObjects({
           query: {
             type: "bookmarks",
-          }
-          props: "_id,slug,title,metadata,created_at",
+          },
+          props: "id,slug,title,metadata,created_at",
           sort: "-created_at",
         })
         .then((data) => {
