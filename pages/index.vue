@@ -131,23 +131,23 @@ export default {
         });
     },
     deleteBookmark(value) {
-    const params = {
-      id: value,
-      type_slug: "bookmarks",
-    }
-    bucket
-      .deleteObject(params)
-      .then(data => {
-        console.log(data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-      setTimeout(function(){
-      if (process.browser) {
-        window.location.reload();
-      }
-      }, 1000)
+      const params = {
+        id: value,
+        type_slug: "bookmarks",
+      };
+      bucket
+        .deleteObject(params)
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      setTimeout(function() {
+        if (process.browser) {
+          window.location.reload();
+        }
+      }, 1000);
     },
     copyToClipboard(value) {
       navigator.clipboard.writeText(value);
