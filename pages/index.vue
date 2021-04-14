@@ -129,10 +129,12 @@ export default {
         });
     },
     deleteBookmark(value) {
+    const params = {
+      id: value,
+      type_slug: "bookmarks",
+    }
     bucket
-      .deleteObject({
-        id: value,
-      })
+      .deleteObject(params)
       .then(data => {
         console.log(data)
       })
