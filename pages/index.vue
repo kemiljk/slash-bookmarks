@@ -131,7 +131,7 @@ export default {
     deleteBookmark(value) {
     bucket
       .deleteObject({
-        slug: value,
+        id: value,
       })
       .then(data => {
         console.log(data)
@@ -139,9 +139,11 @@ export default {
       .catch(err => {
         console.log(err)
       })
+      setTimeout(function(){
       if (process.browser) {
         window.location.reload();
       }
+      }, 1000)
     },
     copyToClipboard(value) {
       navigator.clipboard.writeText(value);
