@@ -143,11 +143,11 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-      setTimeout(function() {
+      setTimeout(() => {
         if (process.browser) {
           window.location.reload();
         }
-      }, 1000);
+      }, 2000);
     },
     copyToClipboard(value) {
       navigator.clipboard.writeText(value);
