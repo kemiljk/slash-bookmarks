@@ -30,9 +30,9 @@ import { RefreshCwIcon } from "vue-feather-icons";
 import Cosmic from "cosmicjs";
 const api = Cosmic();
 const bucket = api.bucket({
-  slug: NUXT_ENV_COSMIC_SLUG,
-  read_key: NUXT_ENV_COSMIC_READ_KEY,
-  write_key: NUXT_ENV_COSMIC_WRITE_KEY,
+  slug: process.env.NUXT_ENV_COSMIC_SLUG,
+  read_key: process.env.NUXT_ENV_COSMIC_READ_KEY,
+  write_key: process.env.NUXT_ENV_COSMIC_WRITE_KEY,
 });
 
 export default {
