@@ -130,7 +130,7 @@ export default {
       this.$emit("deleteBookmark", this.bookmark.id);
     },
     copyToClipboard() {
-      setTimeout(() => (this.show = false), 1000);
+      setTimeout(() => (this.show = false), 2000);
       this.$emit("copyToClipboard", this.bookmark.metadata.url);
     },
   },
