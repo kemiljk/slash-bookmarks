@@ -86,20 +86,12 @@ export default {
     },
     markAsRead(value) {
       const params = {
-        slug: value,
-        type_slug: "bookmarks",
-        metafields: [
-          {
-            type: "switch",
-            title: "is read",
-            key: "is_read",
-            value: true,
-            options: "true,false",
-          },
-        ],
+        id: `${value}`,
+        key: `read`,
+        value: true,
       };
       bucket
-        .editObjectMetafields(params)
+        .editObjectMetafield(params)
         .then((data) => {
           console.log(data);
         })
@@ -109,20 +101,12 @@ export default {
     },
     markAsUnread(value) {
       const params = {
-        slug: value,
-        type_slug: "bookmarks",
-        metafields: [
-          {
-            type: "switch",
-            title: "is read",
-            key: "is_read",
-            value: false,
-            options: "true,false",
-          },
-        ],
+        id: `${value}`,
+        key: `read`,
+        value: false,
       };
       bucket
-        .editObjectMetafields(params)
+        .editObjectMetafield(params)
         .then((data) => {
           console.log(data);
         })
@@ -147,7 +131,7 @@ export default {
         if (process.browser) {
           window.location.reload();
         }
-      }, 2000);
+      }, 3000);
     },
     copyToClipboard(value) {
       navigator.clipboard.writeText(value);

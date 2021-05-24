@@ -10,7 +10,7 @@
       <button
         class="text-left w-full focus:outline-none focus:ring-2 focus:ring-white"
         type="button"
-        :class="[bookmark.metadata.is_read ? 'opacity-50' : 'opacity-100']"
+        :class="[bookmark.metadata.read ? 'opacity-50' : 'opacity-100']"
       >
         <header class="flex items-top justify-between pt-4 pb-2">
           <h1 class="text-black dark:text-white text-xl font-bold">
@@ -18,7 +18,7 @@
           </h1>
           <check-icon
             :class="[
-              bookmark.metadata.is_read
+              bookmark.metadata.read
                 ? 'text-green-700 dark:text-green-400 flex-shrink-0 ml-4'
                 : 'hidden',
             ]"
@@ -42,7 +42,9 @@
         <button
           type="button"
           class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
-          @click="markAsUnread()"
+          @click="
+            bookmark.metadata.read === true ? markAsUnread() : markAsRead()
+          "
         >
           <div class="flex justify-between items-center">
             <book-open-icon
@@ -119,12 +121,12 @@ export default {
   },
   methods: {
     markAsRead() {
-      this.bookmark.metadata.is_read = true;
-      this.$emit("markAsRead", this.bookmark.slug);
+      this.bookmark.metadata.read = true;
+      this.$emit("markAsRead", this.bookmark.id);
     },
     markAsUnread() {
-      this.bookmark.metadata.is_read = false;
-      this.$emit("markAsUnread", this.bookmark.slug);
+      this.bookmark.metadata.read = false;
+      this.$emit("markAsUnread", this.bookmark.id);
     },
     deleteBookmark() {
       this.$emit("deleteBookmark", this.bookmark.id);
