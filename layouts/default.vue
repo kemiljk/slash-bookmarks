@@ -9,7 +9,7 @@ export default {
   head() {
     return {
       bodyAttrs: {
-        class: "bg-white dark:bg-black",
+        class: "bg-gray-50 dark:bg-black",
       },
     };
   },

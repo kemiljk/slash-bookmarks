@@ -1,5 +1,7 @@
 <template>
-  <div class="border-b-2 border-gray-200 dark:border-gray-700">
+  <div
+    class="bg-white shadow-md hover:shadow-lg transform transition-all dark:shadow-none dark:bg-gray-900 rounded-2xl"
+  >
     <a
       :href="bookmark.metadata.url"
       target="_blank"
@@ -12,36 +14,41 @@
         type="button"
         :class="[bookmark.metadata.read ? 'opacity-50' : 'opacity-100']"
       >
-        <header class="flex items-top justify-between pt-4 pb-2">
-          <h1 class="text-black dark:text-white text-xl font-bold">
-            {{ bookmark.title }}
-          </h1>
-          <check-icon
-            :class="[
-              bookmark.metadata.read
-                ? 'text-green-700 dark:text-green-400 flex-shrink-0 ml-4'
-                : 'hidden',
-            ]"
-          />
-        </header>
-        <p
-          class="font-mono text-gray-500 dark:text-gray-400 pt-0 pb-2 font-medium"
-        >
-          {{ bookmark.created_at | moment("from", "now") }}
-        </p>
-        <p
-          class="text-gray-700 dark:text-gray-300 pt-4 font-medium"
-          v-html="bookmark.metadata.snippet"
-        >
-          {{ bookmark.metadata.snippet }}
-        </p>
+        <div class="pt-8 px-8">
+          <header class="flex items-top justify-between pb-2">
+            <h1 class="text-black dark:text-white text-xl font-bold">
+              {{ bookmark.title }}
+            </h1>
+            <check-icon
+              :class="[
+                bookmark.metadata.read
+                  ? 'text-green-700 dark:text-green-400 flex-shrink-0 ml-4'
+                  : 'hidden',
+              ]"
+            />
+          </header>
+          <p
+            class="font-mono text-gray-500 dark:text-gray-400 pt-0 pb-2 font-medium"
+          >
+            {{ bookmark.created_at | moment("from", "now") }}
+          </p>
+          <p
+            class="text-gray-700 dark:text-gray-300 pt-4 font-medium"
+            v-html="bookmark.metadata.snippet"
+          >
+            {{ bookmark.metadata.snippet }}
+          </p>
+        </div>
       </button>
     </a>
-    <div class="flex space-x-2 py-6 justify-between">
-      <div flex space-x-2>
+    <!-- Action items -->
+    <div
+      class="flex mt-6 pt-4 justify-between border-t border-gray-100 dark:border-gray-700 pb-8 px-8"
+    >
+      <div class="space-x-4 ">
         <button
           type="button"
-          class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
+          class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
           @click="
             bookmark.metadata.read === true ? markAsUnread() : markAsRead()
           "

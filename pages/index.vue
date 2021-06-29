@@ -1,8 +1,18 @@
 <template>
   <div class="relative mx-auto">
     <Nav />
-    <div class="max-w-3xl mx-auto px-4 pt-16">
-      <div class="grid grid-row xs:grid-cols-1 sm:grid-cols-2 gap-8">
+    <div class="max-w-5xl mx-auto px-4 pt-24">
+      <div
+        v-if="deleting === true"
+        class="absolute transform transition-all top-16 z-50 left-0 right-0"
+      >
+        <div
+          class="flex w-max mt-4 py-2 px-4 rounded-full mx-auto transform transition-all bg-red-300 dark:bg-red-800 text-red-900 dark:text-red-100"
+        >
+          Deleting...
+        </div>
+      </div>
+      <div class="grid grid-row xs:grid-cols-1 sm:grid-cols-2 gap-4">
         <div v-for="bookmark in bookmarks" :key="bookmark._id">
           <keep-alive>
             <BookmarkCard
@@ -62,6 +72,7 @@ export default {
   data() {
     return {
       bookmarks: {},
+      deleting: false,
     };
   },
   created() {
@@ -84,9 +95,9 @@ export default {
           this.bookmarks = bookmarks;
         });
     },
-    markAsRead(value) {
+    markAsRead(object_id) {
       const params = {
-        id: `${value}`,
+        id: `${object_id}`,
         key: `read`,
         value: true,
       };
@@ -99,9 +110,9 @@ export default {
           console.log(err);
         });
     },
-    markAsUnread(value) {
+    markAsUnread(object_id) {
       const params = {
-        id: `${value}`,
+        id: `${object_id}`,
         key: `read`,
         value: false,
       };
@@ -114,11 +125,12 @@ export default {
           console.log(err);
         });
     },
-    deleteBookmark(value) {
+    deleteBookmark(object_id) {
       const params = {
-        id: value,
+        id: object_id,
         type_slug: "bookmarks",
       };
+      this.deleting = true;
       bucket
         .deleteObject(params)
         .then((data) => {
@@ -130,6 +142,7 @@ export default {
       setTimeout(() => {
         if (process.browser) {
           window.location.reload();
+          this.deleting = false;
         }
       }, 3000);
     },
