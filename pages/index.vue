@@ -27,7 +27,7 @@
       </div>
       <Button color="grey" type="button" class="fixed bottom-4 right-4">
         <template #icon>
-          <refresh-cw-icon size="1x" class="text-white" />
+          <refresh-cw-icon size="1x" class="text-gray-700 dark:text-gray-200" />
         </template>
       </Button>
     </div>
