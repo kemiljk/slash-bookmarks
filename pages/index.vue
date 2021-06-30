@@ -7,7 +7,7 @@
         class="absolute animate-bounce top-16 z-50 left-0 right-0"
       >
         <div
-          class="flex w-max mt-4 py-2 px-4 rounded-full mx-auto transform transition-all bg-red-300 dark:bg-red-800 text-red-900 dark:text-red-100"
+          class="flex w-max mt-4 py-2 px-4 rounded-full mx-auto transform transition-all border-2 border-red-900 dark:border-none bg-red-100 dark:bg-red-800 text-red-900 dark:text-red-100"
         >
           Deleting...
         </div>

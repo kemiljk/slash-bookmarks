@@ -43,7 +43,7 @@
     </a>
     <!-- Action items -->
     <div
-      class="flex mt-6 pt-4 justify-between border-t border-gray-100 dark:border-gray-700 pb-8 px-8"
+      class="flex mt-6 pt-4 justify-between border-t border-gray-100 dark:border-gray-700 pb-4 px-8"
     >
       <div class="space-x-4 ">
         <button
