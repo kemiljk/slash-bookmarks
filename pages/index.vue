@@ -3,13 +3,29 @@
     <Nav />
     <div class="max-w-5xl mx-auto px-4 pt-24">
       <div
-        v-if="deleting === true"
-        class="absolute animate-bounce top-16 z-50 left-0 right-0"
+        v-if="this.deleting === true"
+        class="fixed animate-bounce top-16 z-50 left-0 right-0"
       >
         <div
-          class="flex w-max mt-4 py-2 px-4 rounded-full mx-auto transform transition-all border-2 border-red-900 dark:border-none bg-red-100 dark:bg-red-800 text-red-900 dark:text-red-100"
+          class="
+            flex
+            w-max
+            mt-4
+            py-2
+            px-4
+            rounded-full
+            mx-auto
+            transform
+            transition-all
+            border-2 border-red-900
+            dark:border-none
+            bg-red-100
+            dark:bg-red-800
+            text-red-900
+            dark:text-red-100
+          "
         >
-          Deleting...
+          Deleted
         </div>
       </div>
       <div class="grid grid-row xs:grid-cols-1 sm:grid-cols-2 gap-4">
@@ -135,16 +151,12 @@ export default {
         .deleteObject(params)
         .then((data) => {
           console.log(data);
+          this.bookmarks.splice(object_id, 1);
+          this.deleting = false;
         })
         .catch((err) => {
           console.log(err);
         });
-      setTimeout(() => {
-        if (process.browser) {
-          window.location.reload();
-          this.deleting = false;
-        }
-      }, 3000);
     },
     copyToClipboard(value) {
       navigator.clipboard.writeText(value);
