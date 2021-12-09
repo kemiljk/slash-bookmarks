@@ -45,7 +45,7 @@
     <div
       class="flex mt-6 pt-4 justify-end border-t border-gray-100 dark:border-gray-700 pb-4 px-8"
     >
-      /*<div class="space-x-4 ">
+      <!--<div class="space-x-4 ">
         <button
           type="button" disabled
           class="opacity-50 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
@@ -69,7 +69,7 @@
             <trash-2-icon size="1x" class="text-white dark:text-white" />
           </div>
         </button>
-      </div>*/
+      </div>-->
       <button
         type="button"
         class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
