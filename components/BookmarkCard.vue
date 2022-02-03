@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white shadow-md hover:shadow-lg transform transition-all dark:shadow-none dark:bg-gray-900 rounded-2xl"
+    class="flex w-full bg-white shadow-md hover:shadow-lg transform transition-all dark:shadow-none dark:bg-gray-900 rounded-2xl"
   >
     <a
       :href="bookmark.metadata.url"
@@ -45,31 +45,6 @@
     <div
       class="flex mt-6 pt-4 justify-end border-t border-gray-100 dark:border-gray-700 pb-4 px-8"
     >
-      <!--<div class="space-x-4 ">
-        <button
-          type="button" disabled
-          class="opacity-50 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
-          @click="
-            bookmark.metadata.read === true ? markAsUnread() : markAsRead()
-          "
-        >
-          <div class="flex justify-between items-center">
-            <book-open-icon
-              size="1x"
-              class="text-gray-700 dark:text-gray-300"
-            />
-          </div>
-        </button>
-        <button
-          type="button" disabled
-          class="opacity-50 bg-red-400 dark:bg-red-900 hover:bg-red-500 dark:hover:bg-red-800 text-white rounded-full px-3 py-3"
-          @click="deleteBookmark()"
-        >
-          <div class="flex justify-between items-center">
-            <trash-2-icon size="1x" class="text-white dark:text-white" />
-          </div>
-        </button>
-      </div>-->
       <button
         type="button"
         class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
@@ -87,8 +62,9 @@
           <link-2-icon
             v-show="!show"
             size="1x"
-            class="text-gray-700 dark:text-gray-300"
+            class="mr-2 text-gray-700 dark:text-gray-300"
           />
+          <span class="font-sm text-gray-500">Copy link</span>
         </div>
       </button>
     </div>
