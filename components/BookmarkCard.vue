@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex-col w-full bg-white shadow-md hover:shadow-lg transform transition-all dark:shadow-none dark:bg-gray-900 rounded-2xl"
+    class="flex-col w-full bg-white shadow-md hover:shadow-lg transform transition-all dark:shadow-none dark:bg-gray-900 rounded-3xl"
   >
     <a
       :href="bookmark.metadata.url"
