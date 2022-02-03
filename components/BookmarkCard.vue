@@ -43,7 +43,7 @@
     </a>
     <!-- Action items -->
     <div
-      class="flex mt-6 pt-4 justify-end border-t border-gray-100 dark:border-gray-700 pb-4 pr-2"
+      class="flex mt-6 pt-4 justify-end border-t border-gray-100 dark:border-gray-700 pb-4 pr-4"
     >
       <button
         type="button"
