@@ -40,10 +40,10 @@
     <div
       class="flex mt-6 pt-4 justify-between border-t border-gray-100 dark:border-gray-700 pb-4 px-4"
     >
-    <p class="font-mono text-gray-500 dark:text-gray-400 pt-0 pb-2 font-medium"
+    <p class="font-mono text-gray-500 dark:text-gray-400 p-0"
           >
             {{ bookmark.created_at | moment("from", "now") }}
-          </p>
+      </p>
       <button
         type="button"
         class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-white rounded-full px-3 py-2"
