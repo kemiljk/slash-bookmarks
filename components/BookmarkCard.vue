@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex-col w-full bg-white shadow-md hover:shadow-lg transform transition-all dark:shadow-none dark:bg-gray-900 rounded-3xl"
+    class="flex-col w-full bg-gray-50 dark:bg-gray-900 rounded-3xl"
   >
     <a
       :href="bookmark.metadata.url"
@@ -12,7 +12,7 @@
       <button
         class="text-left w-full focus:outline-none focus:ring-2 focus:ring-white"
         type="button"
-        :class="[bookmark.metadata.read ? 'opacity-50' : 'opacity-100']"
+        :class="[bookmark.metadata.read ? 'opacity-50 bg-transparent' : 'opacity-100']"
       >
         <div class="pt-4 px-4">
           <header class="flex items-top justify-between pb-2">
