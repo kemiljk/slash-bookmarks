@@ -17,7 +17,7 @@
       >
         <div class="pt-4 px-4">
           <header class="flex items-top justify-between pb-2">
-            <h1 class="text-black dark:text-white text-xl font-bold">
+            <h1 class="text-black dark:text-white text-md font-bold">
               {{ bookmark.title }}
             </h1>
             <check-icon
