@@ -47,7 +47,7 @@
     >
       <button
         type="button"
-        class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-white rounded-full px-3 py-3"
+        class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-white rounded-full px-3 py-2"
         @click="
           copyToClipboard();
           show = true;
@@ -57,7 +57,7 @@
           <check-icon
             v-show="show"
             size="1x"
-            class="text-green-500 dark:text-green-300"
+            class="mr-2 text-green-500 dark:text-green-300"
           />
           <link-2-icon
             v-show="!show"
