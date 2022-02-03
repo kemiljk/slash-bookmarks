@@ -33,7 +33,7 @@
             {{ bookmark.created_at | moment("from", "now") }}
           </p>
           <p
-            class="text-gray-700 dark:text-gray-300 pt-4 font-medium"
+            class="text-gray-700 dark:text-gray-300 pt-2 text-sm"
             v-html="bookmark.metadata.snippet"
           >
             {{ bookmark.metadata.snippet }}
@@ -64,7 +64,7 @@
             size="1x"
             class="mr-2 text-gray-700 dark:text-gray-300"
           />
-          <span class="font-sm text-gray-700 dark:text-gray-300">Copy link</span>
+          <span class="text-xs uppercase text-gray-700 dark:text-gray-300">Copy link</span>
         </div>
       </button>
     </div>
