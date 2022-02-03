@@ -28,11 +28,6 @@
             />
           </header>
           <p
-            class="font-mono text-gray-500 dark:text-gray-400 pt-0 pb-2 font-medium"
-          >
-            {{ bookmark.created_at | moment("from", "now") }}
-          </p>
-          <p
             class="text-gray-700 dark:text-gray-300 pt-2 text-sm"
             v-html="bookmark.metadata.snippet"
           >
@@ -43,8 +38,12 @@
     </a>
     <!-- Action items -->
     <div
-      class="flex mt-6 pt-4 justify-end border-t border-gray-100 dark:border-gray-700 pb-4 pr-4"
+      class="flex mt-6 pt-4 justify-between border-t border-gray-100 dark:border-gray-700 pb-4 px-4"
     >
+    <p class="font-mono text-gray-500 dark:text-gray-400 pt-0 pb-2 font-medium"
+          >
+            {{ bookmark.created_at | moment("from", "now") }}
+          </p>
       <button
         type="button"
         class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-white rounded-full px-3 py-2"
