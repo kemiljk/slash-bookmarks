@@ -29,7 +29,7 @@
             />
           </header>
           <p
-            class="text-gray-700 dark:text-gray-300 pt-2 text-sm"
+            class="text-gray-500 dark:text-gray-500 pt-2 text-sm"
             v-html="bookmark.metadata.snippet"
           >
             {{ bookmark.metadata.snippet }}
