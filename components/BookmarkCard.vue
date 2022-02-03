@@ -14,7 +14,7 @@
         type="button"
         :class="[bookmark.metadata.read ? 'opacity-50' : 'opacity-100']"
       >
-        <div class="pt-8 px-8">
+        <div class="pt-4 px-4">
           <header class="flex items-top justify-between pb-2">
             <h1 class="text-black dark:text-white text-xl font-bold">
               {{ bookmark.title }}
