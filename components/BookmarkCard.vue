@@ -43,7 +43,7 @@
     </a>
     <!-- Action items -->
     <div
-      class="flex mt-6 pt-4 justify-end border-t border-gray-100 dark:border-gray-700 pb-4 px-8"
+      class="flex mt-6 pt-4 justify-end border-t border-gray-100 dark:border-gray-700 pb-4 pr-2"
     >
       <button
         type="button"
@@ -64,7 +64,7 @@
             size="1x"
             class="mr-2 text-gray-700 dark:text-gray-300"
           />
-          <span class="font-sm text-gray-500">Copy link</span>
+          <span class="font-sm text-gray-700 dark:text-gray-300">Copy link</span>
         </div>
       </button>
     </div>
