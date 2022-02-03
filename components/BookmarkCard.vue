@@ -39,7 +39,7 @@
     </a>
     <!-- Action items -->
     <div
-      class="flex mt-6 justify-between items-center pb-4 px-4"
+      class="flex mt-4 justify-between items-center pb-4 px-4"
     >
     <p class="font-mono text-gray-500 dark:text-gray-400 p-0 text-xs"
           >
