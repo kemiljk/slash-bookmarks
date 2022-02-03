@@ -1,6 +1,7 @@
 <template>
   <div
     class="flex-col w-full bg-gray-100 dark:bg-gray-900 rounded-3xl"
+    :class="[bookmark.metadata.read ? 'bg-transparent' : 'bg-gray-100 dark:bg-gray-900']"
   >
     <a
       :href="bookmark.metadata.url"
